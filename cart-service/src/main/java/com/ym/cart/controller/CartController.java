@@ -42,7 +42,9 @@ public class CartController {
 
     @ApiOperation("查询购物车列表")
     @GetMapping
-    public List<CartVO> queryMyCarts(){
+    public List<CartVO> queryMyCarts(@RequestHeader(value = "user-info",required = false)String userid){
+        //将网管过滤器传递的头部中用户信息打印
+        System.out.println(userid);
         return cartService.queryMyCarts();
     }
     @ApiOperation("批量删除购物车中商品")

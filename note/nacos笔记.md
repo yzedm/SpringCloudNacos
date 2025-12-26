@@ -266,3 +266,21 @@ public class MyGlobalFilter  implements GlobalFilter{
 
 需求：在网关中基于过滤器实现登录校验功能
 
+```
+通过继承GloableFilter，Ordered实现，AuthLoginGloableFilter
+代码:AuthLoginGloableFilter.java
+```
+
+### 实现登录用户信息传递功能
+
+```
+//todo 传递用户信息
+String userInfo = userid.toString();
+exchange.mutate()
+        .request(builder->builder.header("user-info",userInfo))
+        .build();
+```
+
+![image-20251226153603388](images/media/image-20251226153603388.png)
+
+注意需要传递给下一个过滤器。
